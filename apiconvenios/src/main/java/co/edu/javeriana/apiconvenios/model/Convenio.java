@@ -16,7 +16,6 @@ public class Convenio implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
     @Column(name = "ID_CONVENIO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigDecimal idConvenio;
