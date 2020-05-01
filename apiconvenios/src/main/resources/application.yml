@@ -27,8 +27,8 @@ spring:
         naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    #url: jdbc:mysql://db_convenios:3306/securitydb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-    url: jdbc:mysql://localhost:6601/conveniosdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    url: jdbc:mysql://db_convenios:3306/conveniosdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    #url: jdbc:mysql://localhost:6601/conveniosdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     username: convenios
     password: convenios2020++
     platform: mysql

@@ -11,7 +11,7 @@
 FROM adoptopenjdk:11-jre-hotspot
 
 # Parametrizacion del nombre del archivo que genera spring boot
-ARG JAR_FILE=convenios-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=apiconvenios-0.0.1-SNAPSHOT.jar
 ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG BUILD_REVISION

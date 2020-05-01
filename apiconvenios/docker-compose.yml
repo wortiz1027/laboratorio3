@@ -24,33 +24,33 @@ services:
       - '6601:3306'
     volumes:
       - ./src/main/resources/databases/mysql-convenios-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-convenios-schema-v0.1.sql
-      #- data_security:/var/lib/mysql
+      #- data_convenios:/var/lib/mysql
     networks:
       - backend
     healthcheck:
       test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-#  convenios-service:
-#    image: convenios-service:latest
-#    container_name: convenios-service
-#    hostname: convenios-service
-#    restart: always
-#    ports:
-#      - 9091:9091
-#    networks:
-#      - backend
-#    depends_on:
-#      - db_convenios
-#    environment:
-#      - SERVICE_PORTS=9091
-#      - DATABASE_HOST=db_convenios
-#      - DATABASE_USER=convenios
-#      - DATABASE_PASSWORD=convenios2020++
-#      - DATABASE_NAME=conveniosdb
-#      - DATABASE_PORT=6601
+  convenios-service:
+    image: convenios-service:latest
+    container_name: convenios-service
+    hostname: convenios-service
+    restart: always
+    ports:
+      - 9091:9091
+    networks:
+      - backend
+    depends_on:
+      - db_convenios
+    environment:
+      - SERVICE_PORTS=9091
+      - DATABASE_HOST=db_convenios
+      - DATABASE_USER=convenios
+      - DATABASE_PASSWORD=convenios2020++
+      - DATABASE_NAME=conveniosdb
+      - DATABASE_PORT=6601
 volumes:
-  data_security:
+  data_convenios:
 networks:
   backend:
     driver: bridge
