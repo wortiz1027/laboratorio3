@@ -12,7 +12,4 @@ import java.util.Optional;
 @Repository
 public interface ConveniosRepository extends JpaRepository<Convenio, BigDecimal> {
 
-    @Query("SELECT c.proveedor FROM Convenio c WHERE c.idConvenio = :ipConvenio")
-    Optional<Convenio> getProveedorByConvenio(@Param("ipConvenio") BigDecimal convenio);
-
 }

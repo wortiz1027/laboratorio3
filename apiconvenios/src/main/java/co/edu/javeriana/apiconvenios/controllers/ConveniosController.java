@@ -5,13 +5,15 @@ import co.edu.javeriana.apiconvenios.repositories.ConveniosRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -24,7 +26,7 @@ public class ConveniosController {
     private ConveniosRepository repository;
 
     @GetMapping("/convenios")
-    public ResponseEntity<List<Convenio>> convenios() {
+    public ResponseEntity<List<Convenio>> obtenerConvenios() {
 
         List<Convenio> convenios = repository.findAll()
                                              .stream()
@@ -46,6 +48,48 @@ public class ConveniosController {
         }
 
         return new ResponseEntity<>(convenios, HttpStatus.OK);
+    }
+
+    @GetMapping("/convenios/{id}")
+    public ResponseEntity<Convenio> obtenerConvenio(@PathVariable("id") BigDecimal id) {
+
+        Optional<co.edu.javeriana.apiconvenios.model.Convenio> result = repository.findById(id);
+
+        if (!result.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Convenio convenio = new Convenio();
+
+        convenio.setIdConvenio(result.get().getIdConvenio());
+        convenio.setNombre(result.get().getNombre());
+        convenio.setDescripcion(result.get().getDescripcion());
+        convenio.setFecha(result.get().getFecha());
+        convenio.setEsActivo(result.get().getEsActivo());
+        convenio.setProveedor(result.get().getProveedor());
+
+        return new ResponseEntity<>(convenio, HttpStatus.OK);
+    }
+
+    @PostMapping("/convenios")
+    public ResponseEntity<Convenio> crearConvenio(@RequestBody(required = true) Convenio convenio, UriComponentsBuilder ucBuilder) {
+        co.edu.javeriana.apiconvenios.model.Convenio item = new co.edu.javeriana.apiconvenios.model.Convenio();
+
+        item.setNombre(convenio.getNombre());
+        item.setDescripcion(convenio.getDescripcion());
+        item.setFecha(convenio.getFecha());
+        item.setEsActivo(convenio.getEsActivo());
+        item.setProveedor(convenio.getProveedor());
+
+        item = repository.saveAndFlush(item);
+
+        convenio.setIdConvenio(item.getIdConvenio());
+
+        HttpHeaders header = new HttpHeaders();
+        header.setLocation(ucBuilder.path("/convenios/{id}").buildAndExpand(convenio.getIdConvenio()).toUri());
+
+        return new ResponseEntity<>(convenio, header, HttpStatus.CREATED);
+
     }
 
 }
