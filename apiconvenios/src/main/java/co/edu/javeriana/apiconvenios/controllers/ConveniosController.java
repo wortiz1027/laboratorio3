@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -48,8 +50,29 @@ public class ConveniosController {
         return new ResponseEntity<>(convenios, HttpStatus.OK);
     }
 
+    @GetMapping("/convenios/{id}")
+    public ResponseEntity<Convenio> obtenerConvenio(@PathVariable("id") BigDecimal id) {
+
+        Optional<co.edu.javeriana.apiconvenios.model.Convenio> result = repository.findById(id);
+
+        if (!result.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Convenio convenio = new Convenio();
+
+        convenio.setIdConvenio(result.get().getIdConvenio());
+        convenio.setNombre(result.get().getNombre());
+        convenio.setDescripcion(result.get().getDescripcion());
+        convenio.setFecha(result.get().getFecha());
+        convenio.setEsActivo(result.get().getEsActivo());
+        convenio.setProveedor(result.get().getProveedor());
+
+        return new ResponseEntity<>(convenio, HttpStatus.OK);
+    }
+
     @PostMapping("/convenios")
-    public ResponseEntity<Convenio> crearConvenios(@RequestBody(required = true) Convenio convenio, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Convenio> crearConvenio(@RequestBody(required = true) Convenio convenio, UriComponentsBuilder ucBuilder) {
         co.edu.javeriana.apiconvenios.model.Convenio item = new co.edu.javeriana.apiconvenios.model.Convenio();
 
         item.setNombre(convenio.getNombre());
