@@ -25,43 +25,43 @@ spring:
           use_query_cache: false
         generate_statistic: true
         naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    datasource:
-      driverClassName: com.mysql.cj.jdbc.Driver
-      #url: jdbc:mysql://db_convenios:3306/securitydb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-      url: jdbc:mysql://localhost:6601/securitydb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-      username: security
-      password: security2020++
-      platform: mysql
-      initialization-mode: always
-      hikari:
-        initialization-fail-timeout: 0
-        data-source-properties:
-          cachePrepStmts: true
-          useServerPrepStmts: true
-          prepStmtCacheSize: 250
-          prepStmtCacheSqlLimit: 2048
-          useLocalSessionState: true
-          useLocalTransactionState: true
-          rewriteBatchedStatements: true
-          cacheResultSetMetadata: true
-          cacheServerConfiguration: true
-          elideSetAutoCommits: true
-          maintainTimeStats: false
-        pool-name: customerPoolConetion
-        connection-timeout: 60000
-        maximum-pool-size: 5
-    jmx:
-      default-domain: startertest
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://db_convenios:3306/securitydb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    url: jdbc:mysql://localhost:6601/conveniosdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    username: convenios
+    password: convenios2020++
+    platform: mysql
+    initialization-mode: always
+    hikari:
+      initialization-fail-timeout: 0
+      data-source-properties:
+        cachePrepStmts: true
+        useServerPrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useLocalSessionState: true
+        useLocalTransactionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+      pool-name: conveniosPoolConetion
+      connection-timeout: 20000
+      maximum-pool-size: 5
+  jmx:
+    default-domain: startertest
 
-  # +-----------------------------------------------------
-  # |         SPRING LOGGIN CONFIG
-  # +-----------------------------------------------------
-  logging:
-    level:
-      org.springframework.web: DEBUG
-      org.springframework.data: DEBUG
-      org.hibernate.SQL: DEBUG
-      org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
-    pattern:
-      console: "%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"
-      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+# +-----------------------------------------------------
+# |         SPRING LOGGIN CONFIG
+# +-----------------------------------------------------
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.data: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+  pattern:
+    console: "%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

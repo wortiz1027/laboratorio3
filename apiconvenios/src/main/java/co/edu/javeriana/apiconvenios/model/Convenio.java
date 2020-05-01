@@ -40,7 +40,7 @@ public class Convenio implements java.io.Serializable {
 
     @NotNull
     @Column(name = "ACTIVO", columnDefinition = "TINYINT(1)")
-    private Boolean activo;
+    private Boolean esActivo;
 
     @NotNull
     @Column(name = "proveedor")

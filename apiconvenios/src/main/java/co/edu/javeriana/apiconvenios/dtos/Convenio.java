@@ -4,14 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Convenio implements java.io.Serializable {
 
-    private Integer codigo;
+    private BigDecimal idConvenio;
     private String nombre;
     private String descripcion;
-    private Integer proveedor;
+    private Date fecha;
+    private Boolean esActivo;
+    private BigDecimal proveedor;
 
 }
