@@ -25,29 +25,21 @@ USE `conveniosdb` ;
 -- -----------------------------------------------------
 -- Table `conveniosdb`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `conveniosdb`.`convenios` ;
+DROP TABLE IF EXISTS `conveniosdb`.`convenio` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `conveniosdb`.`users` (
-  `id_user` INT NOT NULL AUTO_INCREMENT,
-  `cedula` BIGINT(255) NOT NULL,
-  `nombres` VARCHAR(100) NOT NULL,
-  `apellidos` VARCHAR(100) NOT NULL,
-  `direccion` VARCHAR(255) NOT NULL,
-  `fecha_nacimiento` DATETIME NOT NULL,
-  `telefono` BIGINT(255) NOT NULL,
-  `email` VARCHAR(512) NOT NULL,
-  `username` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(512) NOT NULL,
-  `enable` VARCHAR(45) NULL,
-  `account_non_expired` VARCHAR(45) NULL,
-  `credential_non_expired` VARCHAR(45) NULL,
-  `account_non_locket` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_user`))
+CREATE TABLE IF NOT EXISTS `conveniosdb`.`convenio` (
+  `id_convenio` INT NOT NULL AUTO_INCREMENT,
+  `nombre`      VARCHAR(100) NOT NULL,
+  `descripcion` VARCHAR(100) NOT NULL,
+  `fecha`       DATETIME NOT NULL,
+  `activo`      BOOLEAN NOT NULL,
+  `proveedor`   INT NOT NULL,
+  PRIMARY KEY (`id_convenio`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
-CREATE UNIQUE INDEX `cedula_UNIQUE` ON `conveniosdb`.`users` (`cedula` ASC);
+CREATE UNIQUE INDEX `CONVENIO_UNIQUE` ON `conveniosdb`.`convenio` (`id_convenio` ASC);
 
 SHOW WARNINGS;
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -55,10 +47,10 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `conveniosdb`.`users`
+-- Data for table `conveniosdb`.`convenio`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conveniosdb`;
-INSERT INTO `conveniosdb`.`users` (`id_user`, `cedula`, `nombres`, `apellidos`, `direccion`, `fecha_nacimiento`, `telefono`, `email`, `username`, `password`, `enable`, `account_non_expired`, `credential_non_expired`, `account_non_locket`) VALUES (DEFAULT, 9645167, 'Administrator', 'Administrator', 'Calle 123', '1984-10-27', 301638457, 'administrator@localhost.co', 'admin', '$2a$10$.eFm7QuqWUg38t83B8RWseEwmb8bG9HuYltL/ogJqWmoX42q3fGXm', 'true', 'true', 'true', 'true');
+INSERT INTO `conveniosdb`.`convenio` (`id_convenio`, `nombre`, `descripcion`, `fecha`, `activo`, `proveedor`) VALUES (1, 'CONVENIO_PRUEBA', 'pruebas', NOW(), TRUE, 1);
 
 COMMIT;

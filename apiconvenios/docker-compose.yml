@@ -31,24 +31,24 @@ services:
       test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-  convenios-service:
-    image: convenios-service:latest
-    container_name: convenios-service
-    hostname: convenios-service
-    restart: always
-    ports:
-      - 9091:9091
-    networks:
-      - backend
-    depends_on:
-      - db_convenios
-    environment:
-      - SERVICE_PORTS=9091
-      - DATABASE_HOST=db_convenios
-      - DATABASE_USER=convenios
-      - DATABASE_PASSWORD=convenios2020++
-      - DATABASE_NAME=conveniosdb
-      - DATABASE_PORT=6601
+#  convenios-service:
+#    image: convenios-service:latest
+#    container_name: convenios-service
+#    hostname: convenios-service
+#    restart: always
+#    ports:
+#      - 9091:9091
+#    networks:
+#      - backend
+#    depends_on:
+#      - db_convenios
+#    environment:
+#      - SERVICE_PORTS=9091
+#      - DATABASE_HOST=db_convenios
+#      - DATABASE_USER=convenios
+#      - DATABASE_PASSWORD=convenios2020++
+#      - DATABASE_NAME=conveniosdb
+#      - DATABASE_PORT=6601
 volumes:
   data_security:
 networks:
