@@ -1,0 +1,56 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 20-Abril-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de 2 contendores uno para la aplicacion
+# -              y otro para la base de datos de la app de seguridad
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  db_convenios:
+    image: mysql
+    container_name: db_convenios
+    hostname: db_convenios
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'conveniosdb'
+      MYSQL_USER: 'convenios'
+      MYSQL_PASSWORD: 'convenios2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '6601:3306'
+    volumes:
+      - ./src/main/resources/databases/mysql-convenios-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-convenios-schema-v0.1.sql
+      #- data_security:/var/lib/mysql
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+#  convenios-service:
+#    image: convenios-service:latest
+#    container_name: convenios-service
+#    hostname: convenios-service
+#    restart: always
+#    ports:
+#      - 9091:9091
+#    networks:
+#      - backend
+#    depends_on:
+#      - db_convenios
+#    environment:
+#      - SERVICE_PORTS=9091
+#      - DATABASE_HOST=db_convenios
+#      - DATABASE_USER=convenios
+#      - DATABASE_PASSWORD=convenios2020++
+#      - DATABASE_NAME=conveniosdb
+#      - DATABASE_PORT=6601
+volumes:
+  data_security:
+networks:
+  backend:
+    driver: bridge
