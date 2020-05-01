@@ -9,21 +9,21 @@
 
 version: '3.7'
 services:
-  db_security:
+  db_convenios:
     image: mysql
-    container_name: db_security
-    hostname: db_security
+    container_name: db_convenios
+    hostname: db_convenios
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'securitydb'
-      MYSQL_USER: 'security'
-      MYSQL_PASSWORD: 'security2020++'
+      MYSQL_DATABASE: 'conveniosdb'
+      MYSQL_USER: 'convenios'
+      MYSQL_PASSWORD: 'convenios2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '6603:3306'
+      - '6601:3306'
     volumes:
-      - ./src/main/resources/databases/mysql-security-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-security-schema-v0.1.sql
+      - ./src/main/resources/databases/mysql-convenios-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-convenios-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
@@ -31,24 +31,24 @@ services:
       test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-#  security-service:
-    #    image: security-service:latest
-    #container_name: security-service
-    #hostname: security-service
-    #restart: always
-        #ports:
-      #- 8081:8081
-        #networks:
-      #- backend
-        #depends_on:
-      #- db_security
-        #environment:
-        #- SERVICE_PORTS=8081
-        #- DATABASE_HOST=db_security
-        #- DATABASE_USER=security
-        #- DATABASE_PASSWORD=security2020++
-        #- DATABASE_NAME=securitydb
-      #- DATABASE_PORT=6603
+  convenios-service:
+    image: convenios-service:latest
+    container_name: convenios-service
+    hostname: convenios-service
+    restart: always
+    ports:
+      - 9091:9091
+    networks:
+      - backend
+    depends_on:
+      - db_convenios
+    environment:
+      - SERVICE_PORTS=9091
+      - DATABASE_HOST=db_convenios
+      - DATABASE_USER=convenios
+      - DATABASE_PASSWORD=convenios2020++
+      - DATABASE_NAME=conveniosdb
+      - DATABASE_PORT=6601
 volumes:
   data_security:
 networks:

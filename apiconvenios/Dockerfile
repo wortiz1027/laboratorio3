@@ -1,37 +1,37 @@
 # -------------------------------------------------------------
 # - DOCKERFILE
 # - AUTOR: Equipo 5
-# - FECHA: 20-Abril-2020
+# - FECHA: 01-Mayo-2020
 # - DESCRIPCION: Dockerfile que permite la creacion del
-# -              contenedor con nuestro servicio de seguridad
+# -              contenedor con nuestro servicio de convenios
 # -------------------------------------------------------------
 
 # escape=\ (backslash)
-# Imagen base del Docker Registry para compilar nuestra aplicacion de seguridad
+# Imagen base del Docker Registry para compilar nuestra aplicacion de convenios
 FROM adoptopenjdk:11-jre-hotspot
 
 # Parametrizacion del nombre del archivo que genera spring boot
-ARG JAR_FILE=securityserver-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=convenios-0.0.1-SNAPSHOT.jar
 ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG BUILD_REVISION
 
 ENV APP_HOME="/app" \
     JAVA_OPTS="" \
-	HTTP_PORT=8081
+	HTTP_PORT=9091
 
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \
 	  org.opencontainers.image.authors="Brian Suarez Botia | Eduardo Franco Rivera | Jhon Celemin Florez | Wilman Ortiz Navarro " \
-	  org.opencontainers.image.url="https://gitlab.com/wortiz1027/laboratorio2/-/blob/master/securityserver/Dockerfile" \
+	  org.opencontainers.image.url="https://gitlab.com/wortiz1027/laboratorio3/-/blob/master/apiconvenios/Dockerfile" \
 	  org.opencontainers.image.documentation="" \
-	  org.opencontainers.image.source="https://gitlab.com/wortiz1027/laboratorio2/-/blob/master/securityserver/Dockerfile" \
+	  org.opencontainers.image.source="https://gitlab.com/wortiz1027/laboratorio3/-/blob/master/apiconvenios/Dockerfile" \
 	  org.opencontainers.image.version=$BUILD_VERSION \
 	  org.opencontainers.image.revision=$BUILD_REVISION \
 	  org.opencontainers.image.vendor="javeriana.io" \
 	  org.opencontainers.image.licenses="" \
-	  org.opencontainers.image.title="Aplicacion que gestiona la seguridad de la solucion" \
-	  org.opencontainers.image.description="Imagen docker con la aplicacion que gestiona la seguridad de la solucion"
+	  org.opencontainers.image.title="Aplicacion de gestion de convenios" \
+	  org.opencontainers.image.description="Aplicacion que gestiona la informacion de los convenios del banco con los proveedores de servcios publicos"
 
 # Puerto de exposicion del servicio
 EXPOSE $HTTP_PORT
@@ -51,7 +51,7 @@ VOLUME $APP_HOME/log \
 WORKDIR $APP_HOME
 
 # Creando un archivo en el contenedor
-ADD ./target/$JAR_FILE $APP_HOME/security-service.jar
+ADD ./target/$JAR_FILE $APP_HOME/convenios-service.jar
 
 # Ejecutanto el microservicio en el contenedor
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=qa -jar ${APP_HOME}/security-service.jar" ]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar ${APP_HOME}/convenios-service.jar" ]
