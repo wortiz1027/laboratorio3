@@ -1,4 +1,4 @@
-package co.edu.javeriana.apiproveedores.configurations;
+package co.edu.javeriana.apisaldos.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +34,7 @@ public class SpringFoxConfig {
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("1.0.0")
                 .build();
+
     }
 
 }
