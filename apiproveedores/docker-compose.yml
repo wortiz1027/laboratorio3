@@ -21,14 +21,14 @@ services:
       MYSQL_PASSWORD: 'proveedores2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '6601:3306'
+      - '6603:3306'
     volumes:
       - ./src/main/resources/databases/mysql-proveedores-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-proveedores-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
   proveedores-service:
@@ -37,20 +37,20 @@ services:
     hostname: proveedores-service
     restart: always
     ports:
-      - 9091:9091
+      - 8060:8060
     networks:
       - backend
     depends_on:
       - db_proveedores
     environment:
-      - SERVICE_PORTS=9091
+      - SERVICE_PORTS=8060
       - DATABASE_HOST=db_proveedores
       - DATABASE_USER=proveedores
       - DATABASE_PASSWORD=proveedores2020++
       - DATABASE_NAME=proveedoresdb
-      - DATABASE_PORT=6601
+      - DATABASE_PORT=6603
 volumes:
   data_security:
 networks:
   backend:
-    driver: bridge
+    external: true
