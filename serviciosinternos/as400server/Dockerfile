@@ -2,8 +2,8 @@
 # - DOCKERFILE
 # - AUTOR: Equipo 5
 # - FECHA: 01-Mayo-2020
-# - DESCRIPCION: Dockerfile que permite la creacion del
-# -              contenedor con nuestro servicio de convenios
+# - DESCRIPCION: Dockerfile que permite la creacion de una
+# -              imagen docker con el servidor as400
 # -------------------------------------------------------------
 
 # escape=\ (backslash)
@@ -16,25 +16,23 @@ ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG BUILD_REVISION
 
-ENV APP_HOME="/app" \
-    JAVA_OPTS="" \
-	HTTP_PORT=9092
+ENV APP_HOME="/app"
 
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \
 	  org.opencontainers.image.authors="Brian Suarez Botia | Eduardo Franco Rivera | Jhon Celemin Florez | Wilman Ortiz Navarro " \
-	  org.opencontainers.image.url="https://gitlab.com/wortiz1027/laboratorio3/-/blob/master/apiconvenios/Dockerfile" \
+	  org.opencontainers.image.url="https://gitlab.com/wortiz1027/laboratorio3/-/tree/master/serviciosinternos/as400server/Dockerfile" \
 	  org.opencontainers.image.documentation="" \
-	  org.opencontainers.image.source="https://gitlab.com/wortiz1027/laboratorio3/-/blob/master/apiconvenios/Dockerfile" \
+	  org.opencontainers.image.source="https://gitlab.com/wortiz1027/laboratorio3/-/tree/master/serviciosinternos/as400server/Dockerfile" \
 	  org.opencontainers.image.version=$BUILD_VERSION \
 	  org.opencontainers.image.revision=$BUILD_REVISION \
 	  org.opencontainers.image.vendor="javeriana.io" \
 	  org.opencontainers.image.licenses="" \
-	  org.opencontainers.image.title="Aplicacion de gestion de convenios" \
-	  org.opencontainers.image.description="Aplicacion que gestiona la informacion de los convenios del banco con los proveedores de servcios publicos"
+	  org.opencontainers.image.title="Aplicacion de Servidor AS400" \
+	  org.opencontainers.image.description="Servidor AS400 que retorna los saldos de los clientes del banco"
 
 # Puerto de exposicion del servicio
-EXPOSE $HTTP_PORT
+#EXPOSE $HTTP_PORT
 
 # Creando directorio de la aplicacion
 RUN mkdir $APP_HOME && \

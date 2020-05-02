@@ -2,16 +2,16 @@
 # |         SERVER AS400 CONFIG
 # +-----------------------------------------------------
 as400:
-  hostname: localhost
+  hostname: as400-service
   port: 42400
 
 # +-----------------------------------------------------
 # |         SERVER CONFIG
 # +-----------------------------------------------------
 server:
-  port: 9091
+  port: 52001
   servlet:
-    context-path: /servicio1
+    context-path: /apisaldos
     session:
       cookie:
         name: UISESSION
