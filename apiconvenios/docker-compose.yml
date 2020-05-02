@@ -28,7 +28,7 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
   convenios-service:
