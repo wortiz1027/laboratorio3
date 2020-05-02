@@ -1,0 +1,25 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 02-Abril-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de de un api rest que consulta via socket
+# -              en un sistema legado as400 el saldo de los clientes
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  convenios-service:
+    image: saldos-service:latest
+    container_name: saldos-service
+    hostname: saldos-service
+    restart: always
+    ports:
+      - 52001:52001
+    networks:
+      - backend
+volumes:
+  data_convenios:
+networks:
+  backend:
+    external: true

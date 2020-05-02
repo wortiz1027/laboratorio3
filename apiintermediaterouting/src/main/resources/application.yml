@@ -1,0 +1,87 @@
+mensaje:
+  destino: wiortiz@javeriana.edu.co
+  asunto: Soporte urls servicios
+  contenido: Solucionar el error del servicio
+
+
+# +-----------------------------------------------------
+# |         SERVER CONFIG
+# +-----------------------------------------------------
+server:
+  port: 8070
+  servlet:
+    context-path: /apirouting
+    session:
+      cookie:
+        name: UISESSION
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: MYSQL
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none # (create|none|update|create-drop|validate)
+    show-sql: true
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+        generate_statistic: true
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db_routing:3306/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    #url: jdbc:mysql://localhost:6602/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    username: routing
+    password: routing2020++
+    platform: mysql
+    initialization-mode: always
+    hikari:
+      initialization-fail-timeout: 0
+      data-source-properties:
+        cachePrepStmts: true
+        useServerPrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useLocalSessionState: true
+        useLocalTransactionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+      pool-name: routingPoolConetion
+      connection-timeout: 20000
+      maximum-pool-size: 5
+  jmx:
+    default-domain: startertest
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: usuario1Javeriana@gmail.com
+    password: dnirccsouabjtcjq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+           # required: true
+          #quitwait: false
+
+# +-----------------------------------------------------
+# |         SPRING LOGGIN CONFIG
+# +-----------------------------------------------------
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.data: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+  pattern:
+    console: "%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

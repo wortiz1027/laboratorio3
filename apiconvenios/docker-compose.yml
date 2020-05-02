@@ -28,7 +28,7 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
   convenios-service:
@@ -37,7 +37,7 @@ services:
     hostname: convenios-service
     restart: always
     ports:
-      - 9091:9091
+      - 7070:7070
     networks:
       - backend
     depends_on:
@@ -53,4 +53,4 @@ volumes:
   data_convenios:
 networks:
   backend:
-    driver: bridge
+    external: true

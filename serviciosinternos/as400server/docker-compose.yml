@@ -1,0 +1,23 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 01-Abril-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de de un contenedor de un sistema legado
+# -              AS400
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  as400-service:
+    image: as400-service:latest
+    container_name: as400-service
+    hostname: as400-service
+    restart: always
+    ports:
+      - 42400:42400
+    networks:
+      - backend
+networks:
+  backend:
+    external: true

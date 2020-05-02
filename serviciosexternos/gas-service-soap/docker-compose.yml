@@ -1,6 +1,8 @@
 version: "3.1"
 services:
   web-services:
+    image: web-services
+    container_name: web-services
     build:
       context: .
       dockerfile: "Payara/Dockerfile"
@@ -10,8 +12,10 @@ services:
     depends_on: 
       - domiciliaciondb
     networks: 
-      - gas-provider-net
+      - backend
   domiciliaciondb:
+    image: domiciliaciondb
+    container_name: domiciliaciondb
     build: "MariaDB/."
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pw
@@ -20,7 +24,7 @@ services:
     ports:
       - 3306:3306
     networks: 
-      - gas-provider-net
+      - backend
 networks:
-  gas-provider-net:
-    driver: bridge
+  backend:
+    external: true

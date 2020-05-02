@@ -1,23 +1,23 @@
 # -------------------------------------------------------------------
 # - DOCKER COMPOSE FILE
 # - AUTOR: Equipo 5
-# - FECHA: 20-Abril-2020
+# - FECHA: 01-Abril-2020
 # - DESCRIPCION: Docker compose file que permite la
-# -              creacion de 2 contendores uno para la aplicacion
-# -              y otro para la base de datos de la app de seguridad
+# -              creacion de una imagen docker con un api rest que
+# -              valida el usuario registrado en un sistema sap
 # -------------------------------------------------------------------
 
 version: '3.7'
 services:
-  sapservice:
-    image: sapservice:latest
-    container_name: sapservice
-    hostname: sapservice
+  sap-service:
+    image: sap-service:latest
+    container_name: sap-service
+    hostname: sap-service
     restart: always
     ports:
-      - 9092:9092
+      - 55725:55725
     networks:
       - backend
 networks:
   backend:
-    driver: bridge
+    external: true
