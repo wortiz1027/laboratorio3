@@ -1,0 +1,23 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 20-Abril-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de 2 contendores uno para la aplicacion
+# -              y otro para la base de datos de la app de seguridad
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  as400server:
+    image: as400server:latest
+    container_name: as400server
+    hostname: as400server
+    restart: always
+    ports:
+      - 42400:42400
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
