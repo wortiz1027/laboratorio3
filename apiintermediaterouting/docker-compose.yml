@@ -9,21 +9,21 @@
 
 version: '3.7'
 services:
-  db_convenios:
+  db_routing:
     image: mysql
-    container_name: db_convenios
-    hostname: db_convenios
+    container_name: db_routing
+    hostname: db_routing
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'conveniosdb'
-      MYSQL_USER: 'convenios'
-      MYSQL_PASSWORD: 'convenios2020++'
+      MYSQL_DATABASE: 'routingdb'
+      MYSQL_USER: 'routing'
+      MYSQL_PASSWORD: 'routing2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '6601:3306'
+      - '3307:3306'
     volumes:
-      - ./src/main/resources/databases/mysql-convenios-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-convenios-schema-v0.1.sql
+      - ./src/main/resources/databases/mysql-routing-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-routing-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
@@ -41,16 +41,16 @@ services:
 #    networks:
 #      - backend
 #    depends_on:
-#      - db_convenios
+#      - db_routing
 #    environment:
 #      - SERVICE_PORTS=9091
-#      - DATABASE_HOST=db_convenios
+#      - DATABASE_HOST=db_routing
 #      - DATABASE_USER=convenios
 #      - DATABASE_PASSWORD=convenios2020++
 #      - DATABASE_NAME=conveniosdb
 #      - DATABASE_PORT=6601
 volumes:
-  data_security:
+  data_routing:
 networks:
   backend:
     driver: bridge
