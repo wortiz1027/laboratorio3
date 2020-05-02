@@ -9,21 +9,21 @@
 
 version: '3.7'
 services:
-  db_proveedores:
+  db_proxysap:
     image: mysql
-    container_name: db_proveedores
-    hostname: db_proveedores
+    container_name: db_proxysap
+    hostname: db_proxysap
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'proveedoresdb'
-      MYSQL_USER: 'proveedores'
-      MYSQL_PASSWORD: 'proveedores2020++'
+      MYSQL_DATABASE: 'proxysapdb'
+      MYSQL_USER: 'proxysap'
+      MYSQL_PASSWORD: 'proxysap2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '6601:3306'
+      - '6603:3307'
     volumes:
-      - ./src/main/resources/databases/mysql-proveedores-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-proveedores-schema-v0.1.sql
+      - ./src/main/resources/databases/mysql-proxysap-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-proxysap-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
@@ -31,24 +31,24 @@ services:
       test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-  proveedores-service:
-    image: proveedores-service:latest
-    container_name: proveedores-service
-    hostname: proveedores-service
+  proxysap-service:
+    image: proxysap-service:latest
+    container_name: proxysap-service
+    hostname: proxysap-service
     restart: always
     ports:
-      - 9091:9091
+      - 9092:9092
     networks:
       - backend
     depends_on:
-      - db_proveedores
+      - db_proxysap
     environment:
-      - SERVICE_PORTS=9091
-      - DATABASE_HOST=db_proveedores
-      - DATABASE_USER=proveedores
-      - DATABASE_PASSWORD=proveedores2020++
-      - DATABASE_NAME=proveedoresdb
-      - DATABASE_PORT=6601
+      - SERVICE_PORTS=9092
+      - DATABASE_HOST=db_proxysap
+      - DATABASE_USER=proxysap
+      - DATABASE_PASSWORD=proxysap2020++
+      - DATABASE_NAME=proxysapdb
+      - DATABASE_PORT=6603
 volumes:
   data_security:
 networks:
