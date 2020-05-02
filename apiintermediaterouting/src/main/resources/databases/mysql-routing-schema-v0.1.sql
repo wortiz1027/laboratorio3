@@ -48,10 +48,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `routingdb`;
-INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:52001/apisaldos/api/v1.0/saldos/cperez', 'Saldos');
-INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:55725/sap/SapService', 'SAP');
-INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9090/api/domiciliacion/factura?fid=ABCD', 'Facturas');
-INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9091/servicios/pagos/v1/payments/1', 'Agua');
-INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8080/gas-service/PagosService?wsdl', 'Gas');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:52001/apisaldos/api/v1.0/saldos/', 'SALDOS');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:55725/sap/SapService?wsdl', 'SAP');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9090/api/domiciliacion/factura', 'FACTURAS');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9091/servicios/pagos/v1/payments/', 'AGUA');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8080/gas-service/PagosService?wsdl', 'GAS');
+
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:7070/apiconvenios/api/v1.0/convenios', 'CONVENIOS');
 
 COMMIT;

@@ -9,10 +9,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.script.ScriptTemplateConfig;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
@@ -24,6 +26,16 @@ import java.util.Optional;
 @RequestMapping(path = "/api/v1.0")
 @Api(value="Enrutador de invocacion de servicios")
 public class IntermediateRoutingController {
+
+    @Value("${mensaje.destino}")
+    private String destino;
+
+    @Value("${mensaje.asunto}")
+    private String asunto;
+
+    @Value("${mensaje.contenido}")
+    private String contenido;
+
     private final IntermediateRoutingRepository repository;
     private final EnvioEmail enviarMail;
 
@@ -32,12 +44,13 @@ public class IntermediateRoutingController {
             @ApiResponse(code = 200, message = "Consulta el servicio registrado con el nombre {nombreServicio}"),
             @ApiResponse(code = 404, message = "No se encontro informacion del servicio con el nombre {nombreServicio}")
     })
-    @GetMapping("/routing/obtServiciobyName/{nombreServicio}")
+    @GetMapping("/routing/{nombreServicio}/servicio")
     public ResponseEntity<Servicio> obtenerServiciobyName(@PathVariable("nombreServicio") String nombreServicio) {
 
         Optional<co.edu.javeriana.apiintermediaterouting.model.IntermediateRouting> result = Optional.ofNullable(repository.getbyName(nombreServicio));
 
         if (!result.isPresent()) {
+            enviarMail.sendEmail(this.destino, this.asunto, this.contenido);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -47,10 +60,6 @@ public class IntermediateRoutingController {
         servicio.setEndPoint(result.get().getEndPoint());
         servicio.setNombreServicio(result.get().getNombreServicio());
 
-        //EnvioEmail enviarMail = new EnvioEmail();
-
-        enviarMail.sendEmail("usuario1Javeriana@gmail.com", "Prueba envio correo", "jejejeje");
-
         return new ResponseEntity<>(servicio, HttpStatus.OK);
     }
 
@@ -59,7 +68,7 @@ public class IntermediateRoutingController {
             @ApiResponse(code = 200, message = "Consulta el servicio registrado con el id {id}"),
             @ApiResponse(code = 404, message = "No se encontro informacion del servicio con el id {id}")
     })
-    @GetMapping("/routing/obtServiciobyId/{id}")
+    @GetMapping("/routing/{id}")
     public ResponseEntity<Servicio> obtenerServiciobyId(@PathVariable("id") BigDecimal id) {
 
         Optional<co.edu.javeriana.apiintermediaterouting.model.IntermediateRouting> result = repository.findById(id);

@@ -18,7 +18,7 @@ ARG BUILD_REVISION
 
 ENV APP_HOME="/app" \
     JAVA_OPTS="" \
-	HTTP_PORT=9091
+	HTTP_PORT=7070
 
 # Informacion de la persona que mantiene la imagen
 LABEL org.opencontainers.image.created=$BUILD_DATE \

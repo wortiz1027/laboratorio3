@@ -37,7 +37,7 @@ services:
     hostname: convenios-service
     restart: always
     ports:
-      - 9091:9091
+      - 7070:7070
     networks:
       - backend
     depends_on:
@@ -53,4 +53,4 @@ volumes:
   data_convenios:
 networks:
   backend:
-    driver: bridge
+    external: true

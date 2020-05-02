@@ -1,10 +1,16 @@
+mensaje:
+  destino: wiortiz@javeriana.edu.co
+  asunto: Soporte urls servicios
+  contenido: Solucionar el error del servicio
+
+
 # +-----------------------------------------------------
 # |         SERVER CONFIG
 # +-----------------------------------------------------
 server:
-  port: 9091
+  port: 8070
   servlet:
-    context-path: /servicio1
+    context-path: /apirouting
     session:
       cookie:
         name: UISESSION
@@ -27,8 +33,8 @@ spring:
         naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    #url: jdbc:mysql://db_routing:3306/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-    url: jdbc:mysql://localhost:3307/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    url: jdbc:mysql://db_routing:3306/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    #url: jdbc:mysql://localhost:6602/routingdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     username: routing
     password: routing2020++
     platform: mysql

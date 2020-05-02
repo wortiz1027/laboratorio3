@@ -21,36 +21,36 @@ services:
       MYSQL_PASSWORD: 'routing2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '3307:3306'
+      - '6602:3306'
     volumes:
       - ./src/main/resources/databases/mysql-routing-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-routing-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-#  convenios-service:
-#    image: convenios-service:latest
-#    container_name: convenios-service
-#    hostname: convenios-service
-#    restart: always
-#    ports:
-#      - 9091:9091
-#    networks:
-#      - backend
-#    depends_on:
-#      - db_routing
-#    environment:
-#      - SERVICE_PORTS=9091
-#      - DATABASE_HOST=db_routing
-#      - DATABASE_USER=convenios
-#      - DATABASE_PASSWORD=convenios2020++
-#      - DATABASE_NAME=conveniosdb
-#      - DATABASE_PORT=6601
+  routing-service:
+    image: routing-service:latest
+    container_name: routing-service
+    hostname: routing-service
+    restart: always
+    ports:
+      - 8070:8070
+    networks:
+      - backend
+    depends_on:
+      - db_routing
+    environment:
+      - SERVICE_PORTS=8070
+      - DATABASE_HOST=db_routing
+      - DATABASE_USER=routing
+      - DATABASE_PASSWORD=routing2020++
+      - DATABASE_NAME=routingdb
+      - DATABASE_PORT=6602
 volumes:
   data_routing:
 networks:
   backend:
-    driver: bridge
+    external: true
