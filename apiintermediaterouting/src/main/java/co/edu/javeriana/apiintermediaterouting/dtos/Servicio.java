@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.math.BigDecimal;
 
 @Data
@@ -20,5 +19,8 @@ public class Servicio implements java.io.Serializable {
 
     @ApiModelProperty(notes = "Url del servicio registrado")
     private String endPoint;
+
+    @ApiModelProperty(notes = "nombre del servicio registrado")
+    private String nombreServicio;
 
 }

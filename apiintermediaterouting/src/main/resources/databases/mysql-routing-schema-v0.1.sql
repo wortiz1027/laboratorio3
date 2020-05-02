@@ -31,6 +31,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `routingdb`.`routing` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `END_POINT` VARCHAR(100) NOT NULL,
+  `NOMBRE_SERVICIO` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -47,8 +48,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `routingdb`;
-INSERT INTO `routingdb`.`routing` (`END_POINT`) VALUES ('http://EndPoint1');
-INSERT INTO `routingdb`.`routing` (`END_POINT`) VALUES ('http://EndPoint2');
-INSERT INTO `routingdb`.`routing` (`END_POINT`) VALUES ('http://EndPoint3');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:52001/apisaldos/api/v1.0/saldos/cperez', 'Saldos');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:55725/sap/SapService', 'SAP');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9090/api/domiciliacion/factura?fid=ABCD', 'Facturas');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9091/servicios/pagos/v1/payments/1', 'Agua');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8080/gas-service/PagosService?wsdl', 'Gas');
 
 COMMIT;

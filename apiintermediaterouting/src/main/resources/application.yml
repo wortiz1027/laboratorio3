@@ -52,6 +52,20 @@ spring:
       maximum-pool-size: 5
   jmx:
     default-domain: startertest
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: usuario1Javeriana@gmail.com
+    password: dnirccsouabjtcjq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+           # required: true
+          #quitwait: false
 
 # +-----------------------------------------------------
 # |         SPRING LOGGIN CONFIG

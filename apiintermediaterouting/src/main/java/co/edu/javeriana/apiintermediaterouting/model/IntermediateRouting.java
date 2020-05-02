@@ -26,4 +26,10 @@ public class IntermediateRouting implements java.io.Serializable {
     @Column(name = "END_POINT")
     private String endPoint;
 
+    @NotNull
+    @Basic(optional = false)
+    @Size(min = 1, max = 50)
+    @Column(name = "NOMBRE_SERVICIO")
+    private String nombreServicio;
+
 }
