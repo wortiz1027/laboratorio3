@@ -2,7 +2,7 @@
 | :--: |  :--: |
 
 <p align="center">
-  <img width="460" height="300" src="documentacion/images/logo_pug.png">
+  <img width="250" height="150" src="documentacion/images/logo_pug.png">
 </p>
 
 ## TALLE 3 MODELOs Y VALIDACIÓN
