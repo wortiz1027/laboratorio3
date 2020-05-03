@@ -162,7 +162,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 </S:Envelope>
 ```
 
-#### 4.1. Servicio *Gestión de Convenios*
+#### 4.2. Servicio *Gestión de Convenios*
 
 ![alt text](documentacion/images/api_convenios.png "Api de gestion de convenios")
 
@@ -270,7 +270,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
   200
 ```  
 
-#### 4.1. Servicio *Gestión de Proveedores*
+#### 4.3. Servicio *Gestión de Proveedores*
 
 ![alt text](documentacion/images/api_proveedores.png "Api de gestion de proveedores")
 
@@ -388,5 +388,103 @@ DELETE http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
   "fecha": "2020-05-03T22:02:18.752Z",
   "idProveedor": 0,
   "nombre": "string"
+}
+``` 
+
+#### 4.4. Servicio *Notificaciones*
+
+![alt text](documentacion/images/api_mail.png "Api de notificaciones por correo")
+
+- Enviar correo electronico
+
+*Request*
+
+```json
+GET http://localhost:8040/apimail/api/v1.0/email/{servicio}
+```
+
+*Response*
+
+```json
+Http Code 200
+```
+
+#### 4.5. Servicio de *Routing*
+
+![alt text](documentacion/images/api_routing.png "Api de enrutamiento")
+
+- Crear registro del servicio a enrutar
+
+*Request*
+
+```json
+{
+  "endPoint": "string",
+  "idServicio": 0,
+  "nombreServicio": "string"
+}
+```
+
+*Response*
+
+```json
+{
+  "endPoint": "string",
+  "idServicio": 0,
+  "nombreServicio": "string"
+}
+```
+
+- Consultar endpoint del servicio por *{id}*
+
+*Request*
+
+```json
+GET http://localhost:8070/apirouting/api/v1.0/routing/{id}
+```
+
+*Response* 
+
+```json
+{
+  "idServicio": 1,
+  "endPoint": "http://localhost:52001/apisaldos/api/v1.0/saldos/",
+  "nombreServicio": "SALDOS"
+}
+```
+
+- Consultar nombre del servicio por nombre 
+
+*Request* 
+
+```json
+GET http://localhost:8070/apirouting/api/v1.0/routing/{servicio}/servicio
+```
+
+*Response* 
+
+```json
+{
+  "idServicio": 4,
+  "endPoint": "http://localhost:9091/servicios/pagos/v1/payments/",
+  "nombreServicio": "AGUA"
+}
+```
+
+- Eliminar servicio registrado por *{id}* 
+
+*Request*
+
+```json
+DELETE http://localhost:8070/apirouting/api/v1.0/routing/{id}
+```
+
+*Response* 
+
+```json
+{
+  "endPoint": "string",
+  "idServicio": 0,
+  "nombreServicio": "string"
 }
 ```
