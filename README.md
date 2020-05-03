@@ -13,15 +13,25 @@ El equipo 5 está conformado por:
 ### TABLA DE CONTENIDO 
 
 1. [Descripcion del problema](#DESC-PROBLEMA)
+
 2. [Arquitectura de la Solucion](#ARQ-SOL)
+
    2.1. [Justificación de la Arquitectura](#ARQ-SOL)
+   
         1. [Microservicios](#ARQ-MICRO)
+        
         2. [Docker](#DOCKER-MICRO)
+        
         3. [Api Gateway](#GATEWAY-MICRO)
+        
         4. [RabbitMQ](#RABBIT-MICRO)
+        
         5. [Intermediate Routing](#ROUTING-MICRO)
+        
 3. [Inventario de Microservicios](#INV-MICRO)
+
 4. [Documentacion de Microservicios](#DOC-MICRO)
+
 
 #### 1. Decripcion del problema <a name="DESC-PROBLEMA"></a>
 
@@ -54,11 +64,6 @@ Para este tipo de situaciones, donde los proveedores no soportan la última opci
 Principalmente el banco necesita un conjunto de servicios que representen sus necesidades internas de negocio, lo cual les permite desacoplar los servicios de los proveedores y así no depender de sus detalles.
 
 La definición de los servicios se encuentra [aqui](https://github.com/germansua/UJaveriana-AES-ModVal/tree/master/modval/workshops "Repositorio github servicios externos del banco")
-
-<iframe
-  src="https://github.com/germansua/UJaveriana-AES-ModVal/tree/master/modval/workshops"
-  style="width:100%; height:300px;"
-></iframe>
 
 #### 2. Arquitectura de solución <a name="ARQ-SOL"></a>
   
