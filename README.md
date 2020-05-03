@@ -1,4 +1,4 @@
-| ![Image](documentacion/images/logo_pug.png) | <h1> PONTIFICIA UNIVERSIDAD JAVERIANA </h1> |
+| ![Image](documentacion/images/logo_pug.png){ width=50% height=50%} | <h1> PONTIFICIA UNIVERSIDAD JAVERIANA </h1> |
 | :--: |  :--: |
 
 ## TALLE 3 MODELOs Y VALIDACIÓN
