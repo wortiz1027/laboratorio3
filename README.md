@@ -22,7 +22,7 @@ El equipo 5 está conformado por:
         5. [Intermediate Routing](#ROUTING-MICRO)
 3. [Inventario de Microservicios](#INV-MICRO)
 4. [Documentacion de Microservicios](#DOC-MICRO)
-
+5. [Ejecución](#EJECUCION)
 
 #### 1. Decripcion del problema <a name="DESC-PROBLEMA"></a>
 
@@ -395,6 +395,8 @@ DELETE http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
 
 ![alt text](documentacion/images/api_mail.png "Api de notificaciones por correo")
 
+![alt text](documentacion/images/api_mail_ejemplo.png "Api de notificaciones por correo")
+
 - Enviar correo electronico
 
 *Request*
@@ -488,3 +490,26 @@ DELETE http://localhost:8070/apirouting/api/v1.0/routing/{id}
   "nombreServicio": "string"
 }
 ```
+
+#### 5. Ejecución <a name="EJECUCION"></a>
+
+Con el proposito de facilitar la ejecución de la solución se desarrolló un script bash de *Linux* para automatizar tanto la compilación de los projectos *Spring boot 2* como de las builds de las imagenes y la ejecución de los contenedores de cada base de datos y microservicio, para ello en la raíz de *laboratorio3* el script *init.sh* solo basta ejecutar la siguiente instrucción para tener todo el ambiente de la solucion funcionando y disponible:
+
+> [user@developer-io laboratorio3]# *./init.sh*
+
+![alt text](documentacion/images/ejecucion_1.png "Script de inicio")
+
+una vez ejecutado el script podemos observar que ejecuta todas las instrucciones programas:
+
+![alt text](documentacion/images/ejecucion_2.png "Inicio del script")
+
+se puede observar el proceso de compilación:
+
+![alt text](documentacion/images/ejecucion_3.png "Compilación")
+
+y finalmente si todo ha ido bien la ejecucion ha sido exitosa!
+
+![alt text](documentacion/images/ejecucion_4.png "Finalización exitosa")
+
+#### 6. Herramientas y Frameworks <a name="HERRAMIENTAS"></a>
+
