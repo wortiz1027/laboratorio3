@@ -273,3 +273,120 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 #### 4.1. Servicio *Gestión de Proveedores*
 
 ![alt text](documentacion/images/api_proveedores.png "Api de gestion de proveedores")
+
+- Consultar listado de proveedores
+
+*Request*
+
+```json
+  GET http://localhost:8060/apiproveedores/api/v1.0/proveedores
+```  
+
+*Response*
+
+```json
+[
+  {
+    "idProveedor": 1,
+    "nombre": "PROVEEDOR_PRUEBA",
+    "descripcion": "pruebas",
+    "fecha": "2020-05-03 17:44:10",
+    "esActivo": true,
+    "esCompensacion": true
+  }
+]
+``` 
+
+- Crear proveedores de servicios
+
+*Request*
+
+```json
+  GET http://localhost:8060/apiproveedores/api/v1.0/proveedores
+```  
+
+*Response*
+
+```json
+{
+  "descripcion": "string",
+  "esActivo": true,
+  "esCompensacion": true,
+  "fecha": "2020-05-03T21:57:07.816Z",
+  "idProveedor": 0,
+  "nombre": "string"
+}
+```
+
+- Consultar proveedor por *{id}*
+
+*Request*
+
+```json
+  GET http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
+```
+
+*Response*
+
+```json
+{
+  "descripcion": "string",
+  "esActivo": true,
+  "esCompensacion": true,
+  "fecha": "2020-05-03T21:58:11.893Z",
+  "idProveedor": 0,
+  "nombre": "string"
+}
+```
+
+
+- Actualizar información del proveedor por *{id}*
+
+*Request*
+
+```json
+PUT http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
+  
+{
+  "descripcion": "string",
+  "esActivo": true,
+  "esCompensacion": true,
+  "fecha": "2020-05-03T21:57:27.203Z",
+  "idProveedor": 0,
+  "nombre": "string"
+}
+```
+
+*Response*
+
+```json
+{
+  "descripcion": "string",
+  "esActivo": true,
+  "esCompensacion": true,
+  "fecha": "2020-05-03T21:58:11.893Z",
+  "idProveedor": 0,
+  "nombre": "string"
+}
+```
+
+- Eliminar información del proveedor por *{id}*
+ 
+*Request*
+
+```json
+DELETE http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
+```
+
+*Response*
+
+```json
+{
+  "descripcion": "string",
+  "esActivo": true,
+  "esCompensacion": true,
+  "fecha": "2020-05-03T22:02:18.752Z",
+  "idProveedor": 0,
+  "nombre": "string"
+}
+```
