@@ -21,14 +21,14 @@ services:
       MYSQL_PASSWORD: 'proxysap2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '6603:3307'
+      - '6605:3306'
     volumes:
       - ./src/main/resources/databases/mysql-proxysap-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-proxysap-schema-v0.1.sql
       #- data_security:/var/lib/mysql
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"pinghttps://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
   proxysap-service:
@@ -37,18 +37,18 @@ services:
     hostname: proxysap-service
     restart: always
     ports:
-      - 9092:9092
+      - 8050:8050
     networks:
       - backend
     depends_on:
       - db_proxysap
     environment:
-      - SERVICE_PORTS=9092
+      - SERVICE_PORTS=8050
       - DATABASE_HOST=db_proxysap
       - DATABASE_USER=proxysap
       - DATABASE_PASSWORD=proxysap2020++
       - DATABASE_NAME=proxysapdb
-      - DATABASE_PORT=6603
+      - DATABASE_PORT=3306
 volumes:
   data_security:
 networks:

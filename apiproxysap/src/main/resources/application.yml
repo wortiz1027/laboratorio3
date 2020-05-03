@@ -2,9 +2,9 @@
 # |         SERVER CONFIG
 # +-----------------------------------------------------
 server:
-  port: 9092
+  port: 8050
   servlet:
-    context-path: /servicio2
+    context-path: /apiproxy
     session:
       cookie:
         name: UISESSION
@@ -27,7 +27,7 @@ spring:
         naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://db_proxysap:3307/proxysapdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    url: jdbc:mysql://db_proxysap:3306/proxysapdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     #url: jdbc:mysql://localhost:6601/proveedoresdb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     username: proxysap
     password: proxysap2020++

@@ -36,7 +36,7 @@ public class ProxyController {
     })
     @GetMapping("/proveedores")
     public ResponseEntity<List<Proveedor>> obtenerProveedores() {
-        String url = "http://localhost:9091/servicio1/api/v1.0/proveedores";
+        String url = "http://proveedores-service:8060/apiproveedores/api/v1.0/proveedores";
         ResponseEntity<List<Proveedor>> proveedores = restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Proveedor>>() {});
 
         System.out.println("response: {}" + proveedores.getBody());

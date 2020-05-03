@@ -46,11 +46,11 @@ docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%
 docker-compose -f apiconvenios/docker-compose.yml up -d
 
 # Construyendo servicio de proveedores
-#echo 'Compilando fuentes y generando artefactos de proveedores...'
-#mvn -f apiproveedores/pom.xml clean package -Dmaven.test.skip=true
+echo 'Compilando fuentes y generando artefactos de proveedores...'
+mvn -f apiproveedores/pom.xml clean package -Dmaven.test.skip=true
 
-#docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=convenios-service:latest --rm=true apiproveedores/
-#docker-compose -f apiproveedores/docker-compose.yml  up -d
+docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=proveedores-service:latest --rm=true apiproveedores/
+docker-compose -f apiproveedores/docker-compose.yml up -d
 
 # Construyendo servicio de routing
 echo 'Compilando fuentes y generando artefactos de routing...'
