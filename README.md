@@ -1,6 +1,10 @@
 | ![Image](documentacion/images/logo_pug.png) | # PONTIFICIA UNIVERSIDAD JAVERIANA |
 | :--: |  :--: |
 
+<p align="center">
+  <img width="460" height="300" src="documentacion/images/logo_pug.png">
+</p>
+
 ## TALLE 3 MODELOs Y VALIDACIÓN
 
 ### EQUIPO 5 
@@ -14,11 +18,16 @@ El equipo 5 está conformado por:
 
 1. [Descripcion del problema](#DESC-PROBLEMA)
 2. [Arquitectura de la Solucion](#ARQ-SOL)
+
    2.1. [Justificación de la Arquitectura](#ARQ-SOL)
         - [Microservicios](#ARQ-MICRO)
+        
         - [Docker](#DOCKER-MICRO)
+        
         - [Api Gateway](#GATEWAY-MICRO)
+        
         - [RabbitMQ](#RABBIT-MICRO)
+        
         - [Intermediate Routing](#ROUTING-MICRO)
 3. [Inventario de Microservicios](#INV-MICRO)
 4. [Documentacion de Microservicios](#DOC-MICRO)
