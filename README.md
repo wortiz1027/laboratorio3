@@ -118,6 +118,10 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 
 #### 4.1. Servicio *Consultar Usuario*
 
+![alt text](documentacion/images/sap_service_1.png "Servicio de consultade usuarios")
+
+![alt text](documentacion/images/sap_service_2.png "Contrato servicios SAP")
+
 ***Request***
 
 ```xml
@@ -157,3 +161,115 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
    </S:Body>
 </S:Envelope>
 ```
+
+#### 4.1. Servicio *Gestión de Convenios*
+
+![alt text](documentacion/images/api_convenios.png "Api de gestion de convenios")
+
+- Consultar listado de convenios
+
+*Request*
+
+```json
+  GET "http://localhost:7070/apiconvenios/api/v1.0/convenios"
+```
+
+*Response*
+
+```json
+  [
+    {
+      "idConvenio": 1,
+      "nombre": "CONVENIO_PRUEBA",
+      "descripcion": "pruebas",
+      "fecha": "2020-05-03 17:43:50",
+      "esActivo": true,
+      "proveedor": 1
+    }
+  ]
+```
+- Crear convenio
+
+*Request*
+
+```json
+  POST "http://localhost:7070/apiconvenios/api/v1.0/convenios
+```
+
+*Response*
+
+```json
+  {
+    "descripcion": "string",
+    "esActivo": true,
+    "fecha": "2020-05-03T20:23:24.125Z",
+    "idConvenio": 0,
+    "nombre": "string",
+    "proveedor": 0
+  }
+```
+- Consultar convenios por *{id}*
+
+*Request*
+
+```json
+  POST "http://localhost:7070/apiconvenios/api/v1.0/convenios/{id}
+```
+
+*Response*
+
+```json
+  {
+    "idConvenio": 1,
+    "nombre": "CONVENIO_PRUEBA",
+    "descripcion": "pruebas",
+    "fecha": "2020-05-03 17:43:50",
+    "esActivo": true,
+    "proveedor": 1
+  }
+```
+- Actualizar información del convenio
+
+*Request*
+
+```json
+  {
+    "idConvenio": 1,
+    "nombre": "CONVENIO_PRUEBA_2",
+    "descripcion": "pruebas",
+    "fecha": "2020-05-03 17:43:50",
+    "esActivo": true,
+    "proveedor": 1
+  }
+```
+
+*Response*
+
+```json
+  {
+    "idConvenio": 1,
+    "nombre": "CONVENIO_PRUEBA_2",
+    "descripcion": "pruebas",
+    "fecha": "2020-05-03 17:43:50",
+    "esActivo": true,
+    "proveedor": 1
+  }
+```
+
+- Eliminar convenios por *{id}*
+
+*Request*
+
+```json
+  DELETE http://localhost:7070/apiconvenios/api/v1.0/convenios/{id}
+```
+
+*Response*
+
+```json
+  200
+```  
+
+#### 4.1. Servicio *Gestión de Proveedores*
+
+![alt text](documentacion/images/api_proveedores.png "Api de gestion de proveedores")
