@@ -31,10 +31,10 @@ services:
       test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
       timeout: 20s
       retries: 10
-  proxysap-service:
-    image: proxysap-service:latest
-    container_name: proxysap-service
-    hostname: proxysap-service
+  apiproxysap-service:
+    image: apiproxysap-service:latest
+    container_name: apiproxysap-service
+    hostname: apiproxysap-service
     restart: always
     ports:
       - 8050:8050

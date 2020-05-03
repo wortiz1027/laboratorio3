@@ -1,0 +1,29 @@
+mensaje:
+  destino: wiortiz@javeriana.edu.co
+  asunto: Soporte registro de servicios
+  contenido: Solucionar el error del servicio %s
+
+# +-----------------------------------------------------
+# |         SERVER CONFIG
+# +-----------------------------------------------------
+server:
+  port: 8040
+  servlet:
+    context-path: /apimail
+    session:
+      cookie:
+        name: UISESSION
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: usuario1Javeriana@gmail.com
+    password: dnirccsouabjtcjq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

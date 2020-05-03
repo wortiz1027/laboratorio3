@@ -59,6 +59,20 @@ mvn -f apiintermediaterouting/pom.xml clean package -Dmaven.test.skip=true
 docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=routing-service:latest --rm=true apiintermediaterouting/
 docker-compose -f apiintermediaterouting/docker-compose.yml up -d
 
+# Construyendo servicio de proxy sap
+echo 'Compilando fuentes y generando artefactos de proxy SAP...'
+mvn -f apiproxysap/pom.xml clean package -Dmaven.test.skip=true
+
+docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=apiproxysap-service:latest --rm=true apiproxysap/
+docker-compose -f apiproxysap/docker-compose.yml up -d
+
+# Construyendo servicio de proxy sap
+echo 'Compilando fuentes y generando artefactos de proxy SAP...'
+mvn -f apimail/pom.xml clean package -Dmaven.test.skip=true
+
+docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=email-service:latest --rm=true apimail/
+docker-compose -f apimail/docker-compose.yml up -d
+
 # Eliminando imagenes residuales
 echo 'Limpiando imagenes residuales...'
 docker rmi $(docker images -f "dangling=true" -q)

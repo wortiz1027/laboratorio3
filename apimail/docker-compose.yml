@@ -1,0 +1,26 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 20-Abril-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de un contenedor con el servicio de emails
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  email-service:
+    image: email-service:latest
+    container_name: email-service
+    hostname: email-service
+    restart: always
+    ports:
+      - 8040:8040
+    networks:
+      - backend
+    environment:
+      - SERVICE_PORTS=8084
+volumes:
+  data_convenios:
+networks:
+  backend:
+    external: true
