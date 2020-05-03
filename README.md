@@ -97,3 +97,63 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 | API_0010 | v1.0 | Api Proveedores | Api con el CRUD para los proveedores | http://localhost:8060/apiproveedores/api/v1.0/proveedores |
 
 #### 4. Documentación de Microservicios <a name="DOC-MICRO"></a>
+
+#### 4.1. Servicio *Consultar Saldos*
+
+![alt text](documentacion/images/api_saldos.png "Servicio de consultar saldos")
+
+***Request***
+
+```json
+  http://localhost:52001/apisaldos/api/v1.0/saldos/{username}
+```
+
+***Response***
+
+```json
+  {
+    "saldo": 1200000
+  }
+```
+
+#### 4.1. Servicio *Consultar Usuario*
+
+***Request***
+
+```xml
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sap="http://sapservice.javeriana.edu.co/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sap:existeUsuario>
+         <!--Optional:-->
+         <arg0>cperez</arg0>
+      </sap:existeUsuario>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+***Response***
+
+```xml
+  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:existeUsuarioResponse xmlns:ns2="http://sapservice.javeriana.edu.co/">
+         <return>
+            <cabecera>
+               <code>0</code>
+               <description>Usuario registrado</description>
+               <type>OK</type>
+            </cabecera>
+            <usuario>
+               <apellidos>Perez Rodriguez</apellidos>
+               <code>1111</code>
+               <direccion>Calle 123 # 123</direccion>
+               <nombres>Carlos Andres</nombres>
+               <telefono>951478</telefono>
+               <username>cperez</username>
+            </usuario>
+         </return>
+      </ns2:existeUsuarioResponse>
+   </S:Body>
+</S:Envelope>
+```
