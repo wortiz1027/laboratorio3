@@ -13,23 +13,14 @@ El equipo 5 está conformado por:
 ### TABLA DE CONTENIDO 
 
 1. [Descripcion del problema](#DESC-PROBLEMA)
-
 2. [Arquitectura de la Solucion](#ARQ-SOL)
-
    2.1. [Justificación de la Arquitectura](#ARQ-SOL)
-   
         1. [Microservicios](#ARQ-MICRO)
-        
         2. [Docker](#DOCKER-MICRO)
-        
         3. [Api Gateway](#GATEWAY-MICRO)
-        
         4. [RabbitMQ](#RABBIT-MICRO)
-        
         5. [Intermediate Routing](#ROUTING-MICRO)
-        
 3. [Inventario de Microservicios](#INV-MICRO)
-
 4. [Documentacion de Microservicios](#DOC-MICRO)
 
 
