@@ -1,28 +1,35 @@
 | <img src="documentacion/images/logo_pug.png" width="130px" height="180px"> | <h1> PONTIFICIA UNIVERSIDAD JAVERIANA </h1> |
 | :--: |  :--: |
 
-## TALLE 3 MODELOs Y VALIDACIÓN
+## TALLE 1 MODELOS Y VALIDACIÓN
 
 ### EQUIPO 5 
 El equipo 5 está conformado por:
-  - Jhon Edward Celemin Florez  
-  - Eduardo José Franco Rivera
-  - Wilman Alberto Ortiz Navarro
-  - Brian Camilo Suarez Botia  
+  - *Jhon Edward Celemin Florez*
+  - *Eduardo José Franco Rivera*
+  - *Wilman Alberto Ortiz Navarro*
+  - *Brian Camilo Suarez Botia*  
 
 ### TABLA DE CONTENIDO 
 
 1. [Descripcion del problema](#DESC-PROBLEMA)
 2. [Arquitectura de la Solucion](#ARQ-SOL)
-   2.1. [Justificación de la Arquitectura](#ARQ-SOL)
+    2.1. [Justificación de la Arquitectura](#ARQ-SOL)
         1. [Microservicios](#ARQ-MICRO)
         2. [Docker](#DOCKER-MICRO)
         3. [Api Gateway](#GATEWAY-MICRO)
         4. [RabbitMQ](#RABBIT-MICRO)
         5. [Intermediate Routing](#ROUTING-MICRO)
-3. [Inventario de Microservicios](#INV-MICRO)
+        3. [Inventario de Microservicios](#INV-MICRO)
 4. [Documentacion de Microservicios](#DOC-MICRO)
+    4.1. [Servicio Consultar Saldos](#SERVICIO-SALDOS)
+    4.2. [Servicio Consultar Usuario](#SERVICIO-USUARIO)
+    4.3. [Servicio Gestión de Convenios](#SERVICIO-CONVENIO)
+    4.4. [Servicio Gestión de Proveedores](#SERVICIO-PROVEEDORES)
+    4.5. [Servicio Notificaciones](#SERVICIO-NOTIFICACIONES)
+    4.6. [Servicio de Routing](#SERVICIO-ROUTING)
 5. [Ejecución](#EJECUCION)
+6. [Herramientas y Frameworks](#HERRAMIENTAS)
 
 #### 1. Decripcion del problema <a name="DESC-PROBLEMA"></a>
 
@@ -60,24 +67,24 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
   
 ##### 2.1. Justificación de la Arquitectura <a name="ARQ_JUSTIFICACION"></a>
 
-##### MicroServicios <a name="ARQ-MICRO"></a>
+##### 1. MicroServicios <a name="ARQ-MICRO"></a>
 
 > *Se utilizo para que el equipo trabajara en pequeños componentes y así poder terminar en el tiempo estimado para el desarrollo. Con esto las responsabilidades de cada integrante del equipo están mas definidas, ya que se definió componentes de la aplicación para cada uno. Esto permitió que cada uno se preocupara por cada microservicio y así no tener dependencias con los demás desarrollos.**
 
-##### Docker <a name="DOCKER-MICRO"></a>
+##### 2. Docker <a name="DOCKER-MICRO"></a>
 
 > *Se utilizo para simplificar el proceso de desarrollo y despliegue de la aplicación, permitido el desarrollo de una manera más rápida y ágil, ya que cada miembro del equipo no tenia que depender de alguien en especifico para que tuviera las maquinas arriba para las pruebas.** 
 
-##### Api Gateway <a name="GATEWAY-MICRO"></a>
+##### 3. Api Gateway <a name="GATEWAY-MICRO"></a>
 
 > *Se utilizo para apoyar la arquitectura de microservicios, se definió para proporcionar un punto central para el consumo de las diferentes apis dentro de la aplicación, va a ser el responsable de atender las diferentes solicitudes que lleguen a la aplicación y va a redireccionar el trafico a los diferentes servicios definidos.*
 
 
-##### RabbitMQ <a name="RABBIT-MICRO"></a>
+##### 4. RabbitMQ <a name="RABBIT-MICRO"></a>
 
 > *Se utilizo para definir las colas que van a almacenar los mensajes que envían las apis de los diferentes servicios, estos van a estar esperando hasta que lleguen las peticiones de consumo. Permitiendo que los mensajes que envían las apis, se enruten al consumidor correcto. Esto ayudara a la integración de los diferentes componentes, sistemas internos y externos.*
 
-##### Intermediate Routing <a name="ROUTING-MICRO"></a>
+##### 5. Intermediate Routing <a name="ROUTING-MICRO"></a>
 
 > *Se utilizo para identificar los diferentes servicios de destino y poderlos enrutar dinámicamente, se basa en una base de datos la cual contiene todos los endpoint de los servicios de la aplicación, actúa como una regla de negocio la cual por el nombre del servicio identifica el servicio de destino, luego, por medio del rabbitMQ o Api Gateway se enruta hacia su destino.*
 
@@ -98,7 +105,11 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 
 #### 4. Documentación de Microservicios <a name="DOC-MICRO"></a>
 
-#### 4.1. Servicio *Consultar Saldos*
+A continuación de detalla cada uno de los servicios que se crearon para la solución al problema propuesto adicional se describen sus operaciones con sus *Inputs/Outputs*, tener presente que se pueden consultar con *url* respectiva de cada servcio:
+
+> *http://<host>:<port>/<context>/swagger-ui.html>*
+
+#### 4.1. Servicio *Consultar Saldos* <a name="SERVICIO-SALDOS"></a>
 
 ![alt text](documentacion/images/api_saldos.png "Servicio de consultar saldos")
 
@@ -116,7 +127,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
   }
 ```
 
-#### 4.1. Servicio *Consultar Usuario*
+#### 4.2. Servicio *Consultar Usuario* <a name="SERVICIO-USUARIO"></a>
 
 ![alt text](documentacion/images/sap_service_1.png "Servicio de consultade usuarios")
 
@@ -162,7 +173,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 </S:Envelope>
 ```
 
-#### 4.2. Servicio *Gestión de Convenios*
+#### 4.3. Servicio *Gestión de Convenios* <a name="SERVICIO-CONVENIO"></a>
 
 ![alt text](documentacion/images/api_convenios.png "Api de gestion de convenios")
 
@@ -270,7 +281,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
   200
 ```  
 
-#### 4.3. Servicio *Gestión de Proveedores*
+#### 4.4. Servicio *Gestión de Proveedores* <a name="SERVICIO-PROVEEDORES"></a>
 
 ![alt text](documentacion/images/api_proveedores.png "Api de gestion de proveedores")
 
@@ -391,7 +402,7 @@ DELETE http://localhost:8060/apiproveedores/api/v1.0/proveedores/{id}
 }
 ``` 
 
-#### 4.4. Servicio *Notificaciones*
+#### 4.5. Servicio *Notificaciones* <a name="SERVICIO-NOTIFICACIONES"></a>
 
 ![alt text](documentacion/images/api_mail.png "Api de notificaciones por correo")
 
@@ -411,7 +422,7 @@ GET http://localhost:8040/apimail/api/v1.0/email/{servicio}
 Http Code 200
 ```
 
-#### 4.5. Servicio de *Routing*
+#### 4.6. Servicio de *Routing* <a name="SERVICIO-ROUTING"></a>
 
 ![alt text](documentacion/images/api_routing.png "Api de enrutamiento")
 
