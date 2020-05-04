@@ -513,3 +513,23 @@ y finalmente si todo ha ido bien la ejecucion ha sido exitosa!
 
 #### 6. Herramientas y Frameworks <a name="HERRAMIENTAS"></a>
 
+Para el desarrollo del presente taller se utilizaron las siguientes herramientas  y frameworks:
+
+| Herramienta | Framework | Versión |
+| :--: |  :--: |  :--: |
+| IntelliJ |  | 2020.1.1 |
+| MySQL WorkBench |  | 8.0.20 |
+| Postman |  | 7.23.0 |
+| Spring Initializr |  |  |
+| Docker |  | 19.03.8-ce |
+| Docker Compose |  | 1.25.5 |
+| MySQL Server |  | 8.0.2 |
+| Git |  | 2.26.2 |
+| GitLab |  | 13.0 |
+|  | Java | 11.0.6 |
+|  | Spring | 5.0 |
+|  | Spring Boot | 2.2.6 |
+|  | Swagger | 2.9.2 |
+|  | MySQL Jdbc | 8.0.11 |
+|  | Lombok | 1.18.2 |
+|  | Maven | 3.6.3 |
