@@ -10,7 +10,8 @@ El equipo 5 está conformado por:
   - *Wilman Alberto Ortiz Navarro*
   - *Brian Camilo Suarez Botia*  
 
-### TABLA DE CONTENIDO 
+### TABLA DE CONTENIDO
+---
 
 1. [Descripcion del problema](#DESC-PROBLEMA)
 2. [Arquitectura de la Solucion](#ARQ-SOL)
@@ -31,8 +32,9 @@ El equipo 5 está conformado por:
 5. [Ejecución](#EJECUCION)
 6. [Herramientas y Frameworks](#HERRAMIENTAS)
 
-#### 1. Decripcion del problema <a name="DESC-PROBLEMA"></a>
 
+#### 1. Decripcion del problema <a name="DESC-PROBLEMA"></a>
+---
 El Banco ABC está realizando varios proyectos de actualización tecnológica los cuales le permiten ofrecer sus productos financieros de manera más ágil y de ésta forma responder a nuevas necesidades del mercado. 
 
 El Banco acaba de firmar una alianza estratégica con diferentes proveedores de servicios públicos (Agua, Gas, Luz, Telefonía) o también llamados convenios, para permitir a los clientes del banco a través de los diferentes canales de servicio (Cajeros Automáticos, Cajero de Oficina, Teléfono, Portal Web, Aplicación Móvil) permitir el pago de los mismos. 
@@ -64,6 +66,7 @@ Principalmente el banco necesita un conjunto de servicios que representen sus ne
 La definición de los servicios se encuentra [aqui](https://github.com/germansua/UJaveriana-AES-ModVal/tree/master/modval/workshops "Repositorio github servicios externos del banco")
 
 #### 2. Arquitectura de solución <a name="ARQ-SOL"></a>
+---
   
 ##### 2.1. Justificación de la Arquitectura <a name="ARQ_JUSTIFICACION"></a>
 
@@ -89,6 +92,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 > *Se utilizo para identificar los diferentes servicios de destino y poderlos enrutar dinámicamente, se basa en una base de datos la cual contiene todos los endpoint de los servicios de la aplicación, actúa como una regla de negocio la cual por el nombre del servicio identifica el servicio de destino, luego, por medio del rabbitMQ o Api Gateway se enruta hacia su destino.*
 
 #### 3. Inventario de Microervicios <a name="INV-MICRO"></a>
+---
 
 | Código | Versión | Nombre | Descripción | Endpoint |
 |---|:-:|:-:|:-:|:-:|
@@ -104,6 +108,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 | API_0010 | v1.0 | Api Proveedores | Api con el CRUD para los proveedores | http://localhost:8060/apiproveedores/api/v1.0/proveedores |
 
 #### 4. Documentación de Microservicios <a name="DOC-MICRO"></a>
+---
 
 A continuación de detalla cada uno de los servicios que se crearon para la solución al problema propuesto adicional se describen sus operaciones con sus *Inputs/Outputs*, tener presente que se pueden consultar con *url* respectiva de cada servcio:
 
@@ -503,6 +508,7 @@ DELETE http://localhost:8070/apirouting/api/v1.0/routing/{id}
 ```
 
 #### 5. Ejecución <a name="EJECUCION"></a>
+---
 
 Con el proposito de facilitar la ejecución de la solución se desarrolló un script bash de *Linux* para automatizar tanto la compilación de los projectos *Spring boot 2* como de las builds de las imagenes y la ejecución de los contenedores de cada base de datos y microservicio, para ello en la raíz de *laboratorio3* el script *init.sh* solo basta ejecutar la siguiente instrucción para tener todo el ambiente de la solucion funcionando y disponible:
 
@@ -523,6 +529,7 @@ y finalmente si todo ha ido bien la ejecucion ha sido exitosa!
 ![alt text](documentacion/images/ejecucion_4.png "Finalización exitosa")
 
 #### 6. Herramientas y Frameworks <a name="HERRAMIENTAS"></a>
+---
 
 Para el desarrollo del presente taller se utilizaron las siguientes herramientas  y frameworks:
 
@@ -533,7 +540,7 @@ Para el desarrollo del presente taller se utilizaron las siguientes herramientas
 | Postman |  | 7.23.0 |
 | Spring Initializr |  |  |
 | Docker |  | 19.03.8-ce |
-| Docker Compose |  | 1.25.5 |
+| Docker Compose |  | 1.25.5 | 
 | MySQL Server |  | 8.0.2 |
 | Git |  | 2.26.2 |
 | GitLab |  | 13.0 |
