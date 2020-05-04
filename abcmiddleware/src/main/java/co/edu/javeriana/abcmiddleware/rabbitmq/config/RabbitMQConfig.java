@@ -62,6 +62,7 @@ public class RabbitMQConfig {
         return rabbitTemplate;
     }
 
+    /*
     @Bean
     public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
         LOG.info("Metodo: messageListenerContainer(ConnectionFactory connectionFactory)");
@@ -71,5 +72,5 @@ public class RabbitMQConfig {
         simpleMessageListenerContainer.setMessageListener(new ABCMessageListener());
         return simpleMessageListenerContainer;
 
-    }
+    }*/
 }

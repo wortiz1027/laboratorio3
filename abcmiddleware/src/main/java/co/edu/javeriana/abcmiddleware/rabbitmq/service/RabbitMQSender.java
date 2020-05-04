@@ -25,4 +25,8 @@ public class RabbitMQSender {
         LOG.info("Enviar mensaje {}", factura);
         rabbitTemplate.convertAndSend(exchange, routingkey, factura);
     }
+
+    /*
+    * TODO Realizar operaciones para cada unos de los publicadores
+    */
 }
