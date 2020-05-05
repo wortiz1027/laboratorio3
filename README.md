@@ -67,7 +67,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 
 #### 2. Arquitectura de solución <a name="ARQ-SOL"></a>
 ---
-  
+
 ##### 2.1. Justificación de la Arquitectura <a name="ARQ_JUSTIFICACION"></a>
 
 ##### 1. MicroServicios <a name="ARQ-MICRO"></a>
@@ -90,6 +90,34 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 ##### 5. Intermediate Routing <a name="ROUTING-MICRO"></a>
 
 > *Se utilizo para identificar los diferentes servicios de destino y poderlos enrutar dinámicamente, se basa en una base de datos la cual contiene todos los endpoint de los servicios de la aplicación, actúa como una regla de negocio la cual por el nombre del servicio identifica el servicio de destino, luego, por medio del rabbitMQ o Api Gateway se enruta hacia su destino.*
+
+##### 6. Trade-Off <a name="TRADE-MICRO"></a>
+> - Al dar simplicidad al desarrollo, se descuidó la seguridad de la aplicación
+> - Permitir que el sistema sea escalable adicionando nuevos servicios, puede afectar en el performance de la aplicación.
+
+##### 7. Patrones <a name="PATRONES-MICRO"></a>
+
+Para la implementación de la arquitectura propuesta se tuvieron en cuenta los siguientes patrones:
+
+  - Base de datos por servcio:
+    
+    ![alt text](documentacion/images/patron_1.png "Base de datos por servicio")
+    
+    
+  *Referencia:  [Base de datos por servicio](https://microservices.io/patterns/data/database-per-service.html "Patrón de dase de datos por servicio")* 
+  
+  - Event Sourcing
+
+  ![alt text](documentacion/images/patron_2.png "Patrón event sourcing")
+  
+  *Referencia: [Event sourcing](https://microservices.io/patterns/data/event-sourcing.html)*
+    
+  - Api Gateway
+  
+  ![alt text](documentacion/images/patron_3.png "Api gateway")
+  
+  *Referencia: [API gateway pattern](https://microservices.io/patterns/apigateway.html)*
+  
 
 #### 3. Inventario de Microervicios <a name="INV-MICRO"></a>
 ---
@@ -550,4 +578,4 @@ Para el desarrollo del presente taller se utilizaron las siguientes herramientas
 |  | Swagger | 2.9.2 |
 |  | MySQL Jdbc | 8.0.11 |
 |  | Lombok | 1.18.2 |
-|  | Maven | 3.6.3 |
+|  | Maven | 3.6.3 | 
