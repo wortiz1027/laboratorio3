@@ -53,7 +53,9 @@ INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http:
 INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9090/api/domiciliacion/factura', 'FACTURAS');
 INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:9091/servicios/pagos/v1/payments/', 'AGUA');
 INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8080/gas-service/PagosService?wsdl', 'GAS');
-
 INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:7070/apiconvenios/api/v1.0/convenios', 'CONVENIOS');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8040/apimail/api/v1.0/email/', 'EMAIL');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8050/apiproxy/api/v1.0/proveedores', 'PROXYPROVEEDORES');
+INSERT INTO `routingdb`.`routing` (`END_POINT`,`NOMBRE_SERVICIO`) VALUES ('http://localhost:8060/apiproveedores/api/v1.0/proveedores', 'PROVEEDORES');
 
 COMMIT;
