@@ -118,6 +118,16 @@ Para la implementación de la arquitectura propuesta se tuvieron en cuenta los s
   
   *Referencia: [API gateway pattern](https://microservices.io/patterns/apigateway.html)*
   
+  - Patrón Intermediate Routing
+  
+  ![alt text](documentacion/images/intermediate_routing.png "Patrón Intermediate Routing")
+
+##### 8. Estilo de realización de los servicios
+
+Para el desarrollo de los servicios se planteo una estructura en capas para cada aplicación y de esta manera tener un control sobre su desarrollo:
+
+  ![alt text](documentacion/images/estilo_realizacion_micro.png "Estructura de las aplicaciones de microservicios")
+
 
 #### 3. Inventario de Microervicios <a name="INV-MICRO"></a>
 ---
@@ -140,7 +150,7 @@ Para la implementación de la arquitectura propuesta se tuvieron en cuenta los s
 
 A continuación de detalla cada uno de los servicios que se crearon para la solución al problema propuesto adicional se describen sus operaciones con sus *Inputs/Outputs*, tener presente que se pueden consultar con *url* respectiva de cada servcio:
 
-> *http://<host>:<port>/<context>/swagger-ui.html>*
+> *http://hostname:port/context/swagger-ui.html*
 
 #### 4.1. Servicio *Consultar Saldos* <a name="SERVICIO-SALDOS"></a>
 
