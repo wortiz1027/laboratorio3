@@ -21,7 +21,9 @@ El equipo 5 está conformado por:
         3. [Api Gateway](#GATEWAY-MICRO)
         4. [RabbitMQ](#RABBIT-MICRO)
         5. [Intermediate Routing](#ROUTING-MICRO)
-        3. [Inventario de Microservicios](#INV-MICRO)
+        6. [Inventario de Microservicios](#INV-MICRO)
+        7. [Patrones](#PATRONES-MICRO)
+        8. [Estilos de los servicios](#ESTILOS-MICRO)
 4. [Documentacion de Microservicios](#DOC-MICRO)
     1. [Servicio Consultar Saldos](#SERVICIO-SALDOS)
     2. [Servicio Consultar Usuario](#SERVICIO-USUARIO)
@@ -68,6 +70,8 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 #### 2. Arquitectura de solución <a name="ARQ-SOL"></a>
 ---
 
+![alt text](documentacion/images/Arquitectura.jpg "Arquitectura")
+
 ##### 2.1. Justificación de la Arquitectura <a name="ARQ_JUSTIFICACION"></a>
 
 ##### 1. MicroServicios <a name="ARQ-MICRO"></a>
@@ -76,7 +80,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 
 ##### 2. Docker <a name="DOCKER-MICRO"></a>
 
-> *Se utilizo para simplificar el proceso de desarrollo y despliegue de la aplicación, permitido el desarrollo de una manera más rápida y ágil, ya que cada miembro del equipo no tenia que depender de alguien en especifico para que tuviera las maquinas arriba para las pruebas.** 
+> *Se utilizo para simplificar el proceso de desarrollo y despliegue de la aplicación, permitiendo el desarrollo de una manera más rápida y ágil, ya que cada miembro del equipo no tenia que depender de alguien en especifico para que tuviera las maquinas arriba para las pruebas.** 
 
 ##### 3. Api Gateway <a name="GATEWAY-MICRO"></a>
 
@@ -99,7 +103,7 @@ La definición de los servicios se encuentra [aqui](https://github.com/germansua
 
 Para la implementación de la arquitectura propuesta se tuvieron en cuenta los siguientes patrones:
 
-  - Base de datos por servcio:
+  - Base de datos por servicio:
     
     ![alt text](documentacion/images/patron_1.png "Base de datos por servicio")
     
@@ -122,7 +126,7 @@ Para la implementación de la arquitectura propuesta se tuvieron en cuenta los s
   
   ![alt text](documentacion/images/intermediate_routing.png "Patrón Intermediate Routing")
 
-##### 8. Estilo de realización de los servicios
+##### 8. Estilo de realización de los servicios <a name="ESTILOS-MICRO"></a>
 
 Para el desarrollo de los servicios se planteo una estructura en capas para cada aplicación y de esta manera tener un control sobre su desarrollo:
 
