@@ -217,5 +217,8 @@ gradle-app.setting
 
 **/.idea/*
 **/*.iml
+
+## MacOs
+*.DS_Store
 # End of https://www.gitignore.io/api/java,gradle,maven,eclipse,intellij
 
