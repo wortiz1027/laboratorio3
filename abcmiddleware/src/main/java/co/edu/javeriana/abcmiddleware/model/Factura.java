@@ -1,16 +1,15 @@
 package co.edu.javeriana.abcmiddleware.model;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor

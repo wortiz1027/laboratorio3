@@ -42,6 +42,7 @@ public class ABCMessageListener{
     @Value("${abcbank.rabbitmq.routingkey.notification}")
     String routingkeynotification;
 
+    //private final RestTemplate restTemplate;
 
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "${abcbank.rabbitmq.queue.uservalidate}"),
@@ -51,9 +52,7 @@ public class ABCMessageListener{
     public void userValidate(Message message) {
         LOG.info("Method.userValidate.Received {}", message);
         Factura factura = (Factura)ObjectAndByteCovertUtil.ByteToObject(message.getBody());
-
-        //1. Consumimos el servicio de SAP para validar si existe la persona.
-        //2. Enviamos la operación al siguiente nivel dentro de la orquestación
+        LOG.info("Method.userValidate.Publishing...........");
         rabbitMQSender.publish(routingkeycheckamounttopay, factura);
     }
 
@@ -64,8 +63,9 @@ public class ABCMessageListener{
     ))
     public void checkamounttopay(Message message) {
         LOG.info("Method.checkamounttopay.Received {}", message);
-        LOG.info("Method.checkamounttopay.Realizar las operaciones necesarias ....");
-        LOG.info("Method.checkamounttopay.Message processed ...");
+        Factura factura = (Factura)ObjectAndByteCovertUtil.ByteToObject(message.getBody());
+        LOG.info("Method.checkamounttopay.Publishing...........");
+        rabbitMQSender.publish(routingkeycheckbalance, factura);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -75,8 +75,9 @@ public class ABCMessageListener{
     ))
     public void checkbalance(Message message) {
         LOG.info("Method.checkbalance.Received {}", message);
-        LOG.info("Method.checkbalance.Realizar las operaciones necesarias ....");
-        LOG.info("Method.checkbalance.Message processed ...");
+        Factura factura = (Factura)ObjectAndByteCovertUtil.ByteToObject(message.getBody());
+        LOG.info("Method.checkbalance.Publishing...........");
+        rabbitMQSender.publish(routingkeypaybill, factura);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -86,8 +87,9 @@ public class ABCMessageListener{
     ))
     public void paybill(Message message) {
         LOG.info("Method.paybill.Received {}", message);
-        LOG.info("Method.paybill.Realizar las operaciones necesarias ....");
-        LOG.info("Method.paybill.Message processed ...");
+        Factura factura = (Factura)ObjectAndByteCovertUtil.ByteToObject(message.getBody());
+        LOG.info("Method.paybill.Publishing...........");
+        rabbitMQSender.publish(routingkeynotification, factura);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -108,8 +110,8 @@ public class ABCMessageListener{
     ))
     public void notification(Message message) {
         LOG.info("Method.notification.Received {}", message);
-        LOG.info("Method.notification.Realizar las operaciones necesarias ....");
-        LOG.info("Method.notification.Message processed ...");
+        Factura factura = (Factura)ObjectAndByteCovertUtil.ByteToObject(message.getBody());
+        LOG.info("Method.paybill.Notifications success...........");
     }
 
 }

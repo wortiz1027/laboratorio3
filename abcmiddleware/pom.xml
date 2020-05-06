@@ -60,6 +60,16 @@
 			</exclusions>
 		</dependency>
 
+
+			<!--<dependency>
+				<groupId>org.glassfish.jaxb</groupId>
+				<artifactId>jaxb-runtime</artifactId>
+			</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>-->
+
 		<!--<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -98,7 +108,66 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!--<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.14.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+					<schemaIncludes>
+						<include>*.wsdl</include>
+					</schemaIncludes>
+				</configuration>
+			</plugin>-->
+			<!--<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.14.0</version>
+				<executions>
+					<execution>
+						<id>pagos</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+							<generatePackage>pagos</generatePackage>
+							<schemaIncludes>
+								<include>PagosService.wsdl</include>
+							</schemaIncludes>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc-pagos</generateDirectory>
+							<generatePackage>co.services.pagos</generatePackage>
+						</configuration>
+					</execution>
+					<execution>
+						<id>sap</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+							<schemaIncludes>
+								<include>SapService.wsdl</include>
+							</schemaIncludes>
+							<generatePackage>sap</generatePackage>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc-sap</generateDirectory>
+							<generatePackage>co.services.sap</generatePackage>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>-->
 		</plugins>
+
 	</build>
 
 </project>
